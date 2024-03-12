@@ -276,7 +276,7 @@ app.post('/addtocart',async(req,res)=>{
 })
 
 app.get('/', (req, res) => {
-  res.send(`Express is running onhttps://eco-backend-boxa.onrender.com/`);
+  res.send(`Express is running on https://eco-backend-boxa.onrender.com/`);
 });
 
 // Start the server
