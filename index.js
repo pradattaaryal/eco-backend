@@ -39,7 +39,7 @@ app.use('/images', express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
   res.json({
     success: "yeaaaaaaaaaaaaaaaaaaaa",
-    image_url: `https://eco-backend-boxa.onrender.com/images/${req.file.filename}`
+    image_url: `${req.file.filename}`
   });
 });
 
