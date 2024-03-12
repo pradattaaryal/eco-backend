@@ -39,7 +39,7 @@ app.use('/images', express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
   res.json({
     success: "yeaaaaaaaaaaaaaaaaaaaa",
-    image_url: `http://localhost:${port}/images/${req.file.filename}`
+    image_url: `https://eco-backend-boxa.onrender.com/images/${req.file.filename}`
   });
 });
 
@@ -276,7 +276,7 @@ app.post('/addtocart',async(req,res)=>{
 })
 
 app.get('/', (req, res) => {
-  res.send(`Express is running on https://localhost:${port}`);
+  res.send(`Express is running onhttps://eco-backend-boxa.onrender.com/`);
 });
 
 // Start the server
