@@ -27,8 +27,7 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
 
 // ... (Other middleware and routes)
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
+ 
 // Handle React routing, return all requests to React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
