@@ -7,7 +7,19 @@ import path from "path";
 import cors from 'cors';
 
 const app = express();
+const express = require('express');  
 
+const app = express();
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+ 
 app.use(express.json());
 app.use(cors());
 
