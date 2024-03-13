@@ -21,13 +21,16 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
   useUnifiedTopology: true
 });
  
- 
-// JWT Secret (Replace 'your-secret' with an actual secret key)
-//const jwtSecret = 'your-secret';
 
-// ... (Other middleware and routes)
-// Serve static files from the React app
+const __dirname = path.resolve();
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+
  
+
+
 // Handle React routing, return all requests to React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
