@@ -23,18 +23,18 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
  
 
 const __dirname = path.resolve();
-
+const staticFilesDir = path.resolve(__dirname, '..', 'client', 'build');
+app.use(express.static(staticFilesDir));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(staticFilesDir, 'index.html'));
+});
 // Serve static files
-app.use(express.static(path.join(__dirname, 'client/build')));
-
+ 
 
  
 
 
-// Handle React routing, return all requests to React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+ 
 // Image upload configuration
 const storage = multer.diskStorage({
   destination: './upload/images',
@@ -236,25 +236,7 @@ app.post('/login',async(req,res)=>{
    
 
 })
-/*app.post('/login', (req, res) => {
-  users.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      const passCompare = req.body.password === user.password;
-      if (passCompare) {
-        const data = { user: { id: user._id } };
-        const token = jwt.sign(data, 'secret_ecom');
-        res.json({ success: true, token });
-      } else {
-        res.json({ success: false, error: "Wrong password" });
-      }
-    } else {
-      res.json({ success: false, error: "Wrong email address" });
-    }
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
-  });
-});*/
+ 
 
  
  //creating endpoint for signup
