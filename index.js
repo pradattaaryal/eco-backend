@@ -11,13 +11,7 @@ const express = require('express');
 
 const app = express();
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Handle React routing, return all requests to React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
  
 app.use(express.json());
@@ -33,7 +27,13 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
 //const jwtSecret = 'your-secret';
 
 // ... (Other middleware and routes)
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 // Image upload configuration
 const storage = multer.diskStorage({
   destination: './upload/images',
@@ -45,7 +45,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Serve images statically
-app.use('/images', express.static('upload/images'));
+ 
+app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 
 // Image upload endpoint
 app.post('/upload', upload.single('product'), (req, res) => {
