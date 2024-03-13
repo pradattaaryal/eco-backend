@@ -20,7 +20,7 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-  const __dirname = path.resolve();
+ 
  
 // JWT Secret (Replace 'your-secret' with an actual secret key)
 //const jwtSecret = 'your-secret';
