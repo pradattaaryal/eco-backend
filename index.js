@@ -20,11 +20,9 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
 });
  
 
- app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
- 
+
+app.use('/images', express.static('upload/images'));
+
 
  
 
@@ -42,7 +40,6 @@ const upload = multer({ storage: storage });
 
 // Serve images statically
  
-app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 
 // Image upload endpoint
 app.post('/upload', upload.single('product'), (req, res) => {
