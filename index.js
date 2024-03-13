@@ -7,9 +7,11 @@ import path from "path";
 import cors from 'cors';
 
 
- 
+ const app = express();
 app.use(express.json());
 app.use(cors());
+
+
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mongodb.net/e-commerce", {
@@ -18,13 +20,10 @@ mongoose.connect("mongodb+srv://pradattaaryal2468:131n151-1a@cluster0.3fafosj.mo
 });
  
 
-const __dirname = path.resolve();
-const staticFilesDir = path.resolve(__dirname, '..', 'client', 'build');
-app.use(express.static(staticFilesDir));
+ app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(staticFilesDir, 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
-// Serve static files
  
 
  
